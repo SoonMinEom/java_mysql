@@ -50,21 +50,25 @@ public class UserDao {
         Connection conn = DriverManager.getConnection(
                 dbHost, dbUser, dbPassword);
 
-
+        //select 구문 작성
         PreparedStatement ps = conn.prepareStatement(
                 "SELECT id, name, password FROM users WHERE id = ?"
         );
 
         ps.setString(1, id);
 
+        // select 구문 실행, 그 결과가 rs에 담김
         ResultSet rs = ps.executeQuery();
         rs.next();
 
+        // User 객체에 정보 담기
         User user = new User(rs.getString("id"),rs.getString("name"), rs.getString("password"));
+        // 다 쓰고 닫기
         rs.close();
         ps.close();
         conn.close();
 
+        // 리턴
         return user;
     }
 
@@ -72,7 +76,7 @@ public class UserDao {
         UserDao userDao = new UserDao();
 //        userDao.add();
         User user = userDao.get("1");
-        System.out.println(user.getName());
+        System.out.printf("id : %s\nname : %s\npassword : %s\n",user.getId(),user.getName(),user.getPassword());
 
     }
 }
