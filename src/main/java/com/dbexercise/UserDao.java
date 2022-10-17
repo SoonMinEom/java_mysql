@@ -20,7 +20,7 @@ public void add() throws SQLException, ClassNotFoundException {
 
 //    Connection conn = DriverManager.getConnection(
 //    "jdbc:mysql://ec2-15-165-231-87.ap-northeast-2.compute.amazonaws.com/likelion", "root", "password");
-   // DB와 연결
+   // DB와 연결하기
     Connection conn = DriverManager.getConnection(
             dbHost,dbUser,dbPassword);
 
